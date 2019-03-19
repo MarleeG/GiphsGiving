@@ -18,7 +18,55 @@
 // it into your `topics` array. Then make a function call that takes each topic 
 // in the array remakes the buttons on the page.
 
-const log = console.log;
-$(document).ready(function(){
+// Giphy Request Parameters
+// q: string
+// Search query term or phrase.
+// GIPHY search will automatically 
+// look for exact matches to queries + 
+// AND match + OR match. Explicit AND + 
+// OR boolean clauses in search queries 
+// are not supported.
 
-});
+// limit: integer (int32)
+// The maximum number of records to return.
+// 25
+
+// rating: string
+// Filters results by specified rating.
+
+const log = console.log;
+$(function () {
+    const MY_KEY = config.MY_KEY;
+    let topics = [`Drake`, `2 Chainz`, `Kendrick Lamar`, `Beyonce`, `Cardi B`];
+
+
+
+    // Create a function that displays all the topics
+    // This will display all the topics in the topics array
+    function displayButtons(topicsArray){
+        topicsArray.forEach((topic) => {
+            let button = $(`<button type="button" class="btn btn-dark topic_button">${topic}</button>`);
+            $(`.topics_col`).append(button);
+        })
+        
+    }
+
+    displayButtons(topics);
+
+
+    $.ajax({
+        url: `http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=${MY_KEY}&limit=10`,
+        context: document.body
+    }).done(function (giphs) {
+        // $(this).addClass("done");
+        // downsized is moving giph
+        // original_still is the paused giph
+        
+        // first giph = giphs.data[0].images
+        log(giphs.data);
+
+    });
+
+
+
+})

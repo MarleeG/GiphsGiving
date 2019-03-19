@@ -35,15 +35,32 @@
             </div>
         </div>
         <div class="row">
+
+            <!-- Topic Buttons -->
             <div class="col-lg-6">
-                <!-- Topics -->
                 <div class="row topics_row justify-content-md-center">
                     <div class="col topics_col">
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+
+            <!-- Topic Input -->
+            <div class="col-lg-6 ">
                 <!-- Add Input for user to add topics -->
+                <div class="row topic_adder_row">
+                    <div class="col ">
+
+                        <form class="form-inline d-flex justify-content-center" id='topic_form'>
+                            <div class="form-group mx-sm-3 mb-2">
+                                <label for="topic_adder_input" class="sr-only">Password</label>
+                                <input type="text" class="form-control" id="topic_adder_input"
+                                    placeholder="Enter a topic">
+                            </div>
+                            <button type="submit" class="btn btn-dark mb-2" id="topic_adder_button">Add Topic</button>
+                        </form>
+
+                    </div>
+                </div>
 
             </div>
         </div>

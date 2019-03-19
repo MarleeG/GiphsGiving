@@ -1,7 +1,11 @@
-.topics_row{
+.topics_row, .topic_adder_row{
     margin-top: 20px;
 }
 
 .topic_button{
     margin: 5px;
+}
+
+.topic_adder_row{
+
 }

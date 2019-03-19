@@ -43,15 +43,38 @@ $(function () {
 
     // Create a function that displays all the topics
     // This will display all the topics in the topics array
-    function displayButtons(topicsArray){
+    function displayButtons(topicsArray) {
         topicsArray.forEach((topic) => {
             let button = $(`<button type="button" class="btn btn-dark topic_button">${topic}</button>`);
             $(`.topics_col`).append(button);
         })
-        
+
     }
 
     displayButtons(topics);
+
+    // Topic adder button
+    $('#topic_adder_button').click((event) => {
+        // prevents page from refreshing
+        event.preventDefault();
+        log(`adding topic...`);
+
+        // assigns the value of the user input to userInput
+        let userInput = $('#topic_adder_input').val();
+        log(userInput);
+
+        // Adds new topic to topics array
+        topics.push(userInput);
+
+        // removes all topic buttons displayed on the screen
+        $('.topic_button').remove();
+
+        // Displays all buttons in topics array
+        displayButtons(topics);
+
+        // Empties Value in input 
+        $('#topic_adder_input').val('');
+    })
 
 
     $.ajax({
@@ -61,7 +84,7 @@ $(function () {
         // $(this).addClass("done");
         // downsized is moving giph
         // original_still is the paused giph
-        
+
         // first giph = giphs.data[0].images
         log(giphs.data);
 

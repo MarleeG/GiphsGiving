@@ -31,7 +31,7 @@
 
 const log = console.log;
 $(function () {
-    // const MY_KEY = config.MY_KEY;
+    var MY_KEY = config.MY_KEY;
     let topics = [`Drake`, `2 Chainz`, `Kendrick Lamar`, `Beyonce`, `Cardi B`];
 
 
@@ -86,18 +86,18 @@ $(function () {
 
     }
 
-    // $.ajax({
-    //     url: `http://api.giphy.com/v1/gifs/search?q=jcole&api_key=${MY_KEY}&limit=10`,
-    //     context: document.body
-    // }).done(function (giphs) {
-    //     // $(this).addClass("done");
-    //     // downsized is moving giph
-    //     // original_still is the paused giph
+    $.ajax({
+        url: `http://api.giphy.com/v1/gifs/search?q=jcole&api_key=${MY_KEY}&limit=10`,
+        context: document.body
+    }).done(function (giphs) {
+        // $(this).addClass("done");
+        // downsized is moving giph
+        // original_still is the paused giph
 
-    //     // first giph = giphs.data[0].images
-    //     log(giphs.data);
+        // first giph = giphs.data[0].images
+        log(giphs.data);
 
-    // });
+    });
 
 
 

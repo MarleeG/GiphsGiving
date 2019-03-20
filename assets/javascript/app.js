@@ -31,7 +31,7 @@
 
 const log = console.log;
 $(function () {
-    const MY_KEY = config.MY_KEY;
+    // const MY_KEY = config.MY_KEY;
     let topics = [`Drake`, `2 Chainz`, `Kendrick Lamar`, `Beyonce`, `Cardi B`];
 
 

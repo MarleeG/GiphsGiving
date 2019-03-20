@@ -1,8 +1,3 @@
-// Before you can make any part of our site work, 
-// you need to create an array of strings, each one related to a topic 
-// that interests you. 
-// Save it to a variable called `topics`.
-
 // 3. When the user clicks on a button, the page should grab 10 static, 
 // non-animated gif images from the GIPHY API and place them on the page.
 
@@ -74,11 +69,25 @@ $(function () {
 
         // Empties Value in input 
         $('#topic_adder_input').val('');
-    })
+    });
 
+    // Topic buttons
+    $('.topic_button').click((event) => {
+        // Grabs value of the button topic clicked on
+        let { innerHTML } = event.target;
+
+
+
+        log(innerHTML);
+    });
+
+    // This will display a random topic when the page initially loads
+    function displayRandomTopic(topicsArray){
+
+    }
 
     $.ajax({
-        url: `http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=${MY_KEY}&limit=10`,
+        url: `http://api.giphy.com/v1/gifs/search?q=jcole&api_key=${MY_KEY}&limit=10`,
         context: document.body
     }).done(function (giphs) {
         // $(this).addClass("done");

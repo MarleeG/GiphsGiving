@@ -72,12 +72,20 @@ $(function () {
         $('#topic_adder_input').val('');
     });
 
+
+    // $('.topic_button').click((event) => {
+    //     
+
+    // });
+
+    
     // Topic buttons
-    $('.topic_button').click((event) => {
+    $(document).on('click', '.topic_button', (event) => {
         // Grabs value of the button topic clicked on
         let { innerHTML } = event.target;
+        displayGiphs(innerHTML);
         log(innerHTML);
-    });
+    })
 
     // This will display a random topic when the page initially loads
     // this returns a random topic 
@@ -96,6 +104,7 @@ $(function () {
             url: `http://api.giphy.com/v1/gifs/search?q=${topicChosen}&api_key=${MY_KEY}&limit=10`,
             context: document.body
         }).done(function (giphs) {
+            // $()
             // downsized is moving giph
             // original_still is the paused giph
 
@@ -103,27 +112,48 @@ $(function () {
             let list_of_giphs = giphs.data;
 
             list_of_giphs.forEach((giph, i) => {
-                // log(giph.images);
+                // log(giph);
                 let image_still = giph.images.original_still.url;
                 let image_animated = giph.images.downsized.url;
 
                 let image = $(`<img class='giph'>`);
                 image.attr('data-still', image_still);
+                image.attr('id', giph.id);
                 image.attr('data-animated', image_animated);
                 image.attr('data-status', 'paused')
                 image.attr('alt', giph.title);
                 image.attr('src', image_still);
-                $('.giphs').append(image);
+                $('.giphs').prepend(image);
             });
         });
     }
 
-    $(document).on('click', '.giph', (event) => {
+    $(document).on('click', 'img.giph', (event) => {
         log(event)
-        log($(this).data('status')); 
+        let { id } = event.target;
+        // log($(this).data('status'));
 
-        
-        log(`Clicked Giph`)
+        let data_status = $(`#${id}`).attr('data-status');
+        let animated_src = $(`#${id}`).attr('data-animated');
+        let still_src = $(`#${id}`).attr('data-still');
+
+        log(data_status);
+
+        // if giph is paused then play it
+        if (data_status === 'paused') {
+
+            $(`#${id}`).attr('src', animated_src);
+            $(`#${id}`).attr('data-status', 'play');
+
+
+        } else if (data_status === 'play') {
+            // pause giph
+            $(`#${id}`).attr('src', still_src);
+            $(`#${id}`).attr('data-status', 'paused');
+        }
+
+
+        // log(`Clicked Giph`)
     })
 
 });

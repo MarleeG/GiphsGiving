@@ -42,9 +42,10 @@ $(function () {
         topicsArray.forEach((topic) => {
             let button = $(`<button type="button" class="btn btn-dark topic_button">${topic}</button>`);
             $(`.topics_col`).append(button);
-        })
-
+        });
     }
+
+
 
     displayButtons(topics);
 
@@ -75,30 +76,54 @@ $(function () {
     $('.topic_button').click((event) => {
         // Grabs value of the button topic clicked on
         let { innerHTML } = event.target;
-
-
-
         log(innerHTML);
     });
 
     // This will display a random topic when the page initially loads
-    function displayRandomTopic(topicsArray){
-
+    // this returns a random topic 
+    function displayRandomTopic(topicsArray) {
+        let randomTopic = Math.floor(Math.random() * topicsArray.length);
+        return topicsArray[randomTopic];
     }
 
-    $.ajax({
-        url: `http://api.giphy.com/v1/gifs/search?q=jcole&api_key=${MY_KEY}&limit=10`,
-        context: document.body
-    }).done(function (giphs) {
-        // $(this).addClass("done");
-        // downsized is moving giph
-        // original_still is the paused giph
-
-        // first giph = giphs.data[0].images
-        log(giphs.data);
-
-    });
+    // log(`random topic: ${}`);
 
 
+    displayGiphs(displayRandomTopic(topics));
 
-})
+    function displayGiphs(topicChosen) {
+        $.ajax({
+            url: `http://api.giphy.com/v1/gifs/search?q=${topicChosen}&api_key=${MY_KEY}&limit=10`,
+            context: document.body
+        }).done(function (giphs) {
+            // downsized is moving giph
+            // original_still is the paused giph
+
+            // first giph = giphs.data[0].images
+            let list_of_giphs = giphs.data;
+
+            list_of_giphs.forEach((giph, i) => {
+                // log(giph.images);
+                let image_still = giph.images.original_still.url;
+                let image_animated = giph.images.downsized.url;
+
+                let image = $(`<img class='giph'>`);
+                image.attr('data-still', image_still);
+                image.attr('data-animated', image_animated);
+                image.attr('data-status', 'paused')
+                image.attr('alt', giph.title);
+                image.attr('src', image_still);
+                $('.giphs').append(image);
+            });
+        });
+    }
+
+    $(document).on('click', '.giph', (event) => {
+        log(event)
+        log($(this).data('status')); 
+
+        
+        log(`Clicked Giph`)
+    })
+
+});

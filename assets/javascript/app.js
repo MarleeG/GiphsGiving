@@ -1,8 +1,10 @@
 $(function () {
-    var MY_KEY = ''
+    var MY_KEY = undefined;
     $.post("/", function (data) {
         MY_KEY = data.MY_KEY;
-        displayGiphs(displayRandomTopic(topics));
+        if (MY_KEY) {
+            displayGiphs(displayRandomTopic(topics));
+        }
     });
 
     let topics = [`Drake`, `J Cole`, `Kendrick Lamar`, `Beyonce`, `Rihanna`];
@@ -57,7 +59,6 @@ $(function () {
     }
 
     function displayGiphs(topicChosen) {
-
         if (MY_KEY) {
             $.ajax({
                 url: `https://api.giphy.com/v1/gifs/search?q=${topicChosen}&api_key=${MY_KEY}&limit=10`,
@@ -93,7 +94,6 @@ $(function () {
                 });
             });
         }
-
     }
 
     $(document).on('click', 'img.giph', (event) => {

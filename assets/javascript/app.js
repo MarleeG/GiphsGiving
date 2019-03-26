@@ -1,5 +1,10 @@
 $(function () {
-    var MY_KEY = config.MY_KEY;
+    var MY_KEY = ''
+    $.post("/", function (data) {
+        MY_KEY = data.MY_KEY;
+        displayGiphs(displayRandomTopic(topics));
+    });
+
     let topics = [`Drake`, `J Cole`, `Kendrick Lamar`, `Beyonce`, `Rihanna`];
 
     // Create a function that displays all the topics
@@ -37,7 +42,6 @@ $(function () {
 
     });
 
-
     // Topic buttons
     $(document).on('click', '.topic_button', (event) => {
         // Grabs value of the button topic clicked on
@@ -52,9 +56,6 @@ $(function () {
         return topicsArray[randomTopic];
     }
 
-
-    displayGiphs(displayRandomTopic(topics));
-
     function displayGiphs(topicChosen) {
         $.ajax({
             url: `http://api.giphy.com/v1/gifs/search?q=${topicChosen}&api_key=${MY_KEY}&limit=10`,
@@ -64,7 +65,7 @@ $(function () {
             // downsized is moving giph
             // original_still is the paused giph
             $('.giph_div').remove();
-            
+
             // first giph = giphs.data[0].images
             let list_of_giphs = giphs.data;
 

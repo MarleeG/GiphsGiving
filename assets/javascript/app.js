@@ -1,13 +1,12 @@
 $(function () {
     var MY_KEY = undefined;
+    let topics = [`Drake`, `J Cole`, `Kendrick Lamar`, `Beyonce`, `Rihanna`];
     $.post("/", (data) => {
         MY_KEY = data.MY_KEY;
         if (MY_KEY) {
             displayGiphs(displayRandomTopic(topics));
         }
     });
-
-    let topics = [`Drake`, `J Cole`, `Kendrick Lamar`, `Beyonce`, `Rihanna`];
 
     // Create a function that displays all the topics
     // This will display all the topics in the topics array
@@ -59,40 +58,40 @@ $(function () {
     }
 
     function displayGiphs(topicChosen) {
-            console.log(`display giphs..`)
-            $.ajax({
-                url: `https://api.giphy.com/v1/gifs/search?q=${topicChosen}&api_key=${MY_KEY}&limit=10`,
-                context: document.body
-            }).done(function (giphs) {
-                // Note:
-                // downsized is moving giph
-                // original_still is the paused giph
-                $('.giph_div').remove();
+        console.log(`display giphs..`)
+        $.ajax({
+            url: `https://api.giphy.com/v1/gifs/search?q=${topicChosen}&api_key=${MY_KEY}&limit=10`,
+            context: document.body
+        }).done(function (giphs) {
+            // Note:
+            // downsized is moving giph
+            // original_still is the paused giph
+            $('.giph_div').remove();
 
-                // first giph = giphs.data[0].images
-                let list_of_giphs = giphs.data;
+            // first giph = giphs.data[0].images
+            let list_of_giphs = giphs.data;
 
-                list_of_giphs.forEach((giph, i) => {
-                    let image_still = giph.images.original_still.url;
-                    let image_animated = giph.images.downsized.url;
-                    let giph_rating = giph.rating;
+            list_of_giphs.forEach((giph, i) => {
+                let image_still = giph.images.original_still.url;
+                let image_animated = giph.images.downsized.url;
+                let giph_rating = giph.rating;
 
-                    // Giph Image
-                    let image = $(`<img class='giph'>`);
-                    image.attr('data-still', image_still);
-                    image.attr('id', giph.id);
-                    image.attr('data-animated', image_animated);
-                    image.attr('data-status', 'paused')
-                    image.attr('alt', giph.title);
-                    image.attr('src', image_still);
+                // Giph Image
+                let image = $(`<img class='giph'>`);
+                image.attr('data-still', image_still);
+                image.attr('id', giph.id);
+                image.attr('data-animated', image_animated);
+                image.attr('data-status', 'paused')
+                image.attr('alt', giph.title);
+                image.attr('src', image_still);
 
-                    let div = $(`<div class="d-inline-block p-2 text-black giph_div">`);
-                    div.append(image);
-                    div.append(`<p>Rated: ${giph_rating}</p>`);
+                let div = $(`<div class="d-inline-block p-2 text-black giph_div">`);
+                div.append(image);
+                div.append(`<p>Rated: ${giph_rating}</p>`);
 
-                    $(`.giphs`).append(div);
-                });
+                $(`.giphs`).append(div);
             });
+        });
     }
 
     $(document).on('click', 'img.giph', (event) => {

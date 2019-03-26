@@ -58,7 +58,7 @@ $(function () {
 
     function displayGiphs(topicChosen) {
         $.ajax({
-            url: `http://api.giphy.com/v1/gifs/search?q=${topicChosen}&api_key=${MY_KEY}&limit=10`,
+            url: `https://api.giphy.com/v1/gifs/search?q=${topicChosen}&api_key=${MY_KEY}&limit=10`,
             context: document.body
         }).done(function (giphs) {
             // Note:

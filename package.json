@@ -1,0 +1,24 @@
+{
+  "name": "GiphsGiving",
+  "version": "1.0.0",
+  "description": "Like Giphs? Search a variety of funny giphs that will keep you entertained. Click on a giph to watch it play!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarleeG/GiphsGiving.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarleeG/GiphsGiving/issues"
+  },
+  "homepage": "https://github.com/MarleeG/GiphsGiving#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "path": "^0.12.7"
+  }
+}

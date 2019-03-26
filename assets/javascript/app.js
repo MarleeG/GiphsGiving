@@ -1,6 +1,6 @@
 $(function () {
     var MY_KEY = undefined;
-    $.post("/", function (data) {
+    $.post("/", (data) => {
         MY_KEY = data.MY_KEY;
         if (MY_KEY) {
             displayGiphs(displayRandomTopic(topics));

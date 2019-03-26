@@ -59,7 +59,6 @@ $(function () {
     }
 
     function displayGiphs(topicChosen) {
-        if (MY_KEY) {
             $.ajax({
                 url: `https://api.giphy.com/v1/gifs/search?q=${topicChosen}&api_key=${MY_KEY}&limit=10`,
                 context: document.body
@@ -93,7 +92,6 @@ $(function () {
                     $(`.giphs`).append(div);
                 });
             });
-        }
     }
 
     $(document).on('click', 'img.giph', (event) => {

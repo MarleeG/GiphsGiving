@@ -12,4 +12,4 @@ Like Giphs? Search a variety of funny giphs that will keep you entertained. Clic
 - [Giphy API](https://giphy.com)
 
 ## Deployed App - Coming Soon
-* GiphsGiving(https://giphs-giving.herokuapp.com/) - App  
+* [GiphsGiving](https://giphs-giving.herokuapp.com/) - App  

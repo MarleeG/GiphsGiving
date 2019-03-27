@@ -2,7 +2,7 @@
   "name": "GiphsGiving",
   "version": "1.0.0",
   "description": "Like Giphs? Search a variety of funny giphs that will keep you entertained. Click on a giph to watch it play!",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -5,7 +5,7 @@ $(function () {
         MY_KEY = data.MY_KEY;
         displayGiphs(displayRandomTopic(topics));
         // if (MY_KEY) {
-            
+
         // }
     });
 
@@ -59,21 +59,21 @@ $(function () {
     }
 
     function displayGiphs(topicChosen) {
-        console.log(`display giphs..`);
+
         if (MY_KEY) {
-            $.ajax({
-                url: `https://api.giphy.com/v1/gifs/search?q=${topicChosen}&api_key=${MY_KEY}&limit=10`,
-                context: document.body
-            }).done(function (giphs) {
+            console.log(`display giphs..`);
+            console.log(topicChosen);
+
+
+            $.get(`https://api.giphy.com/v1/gifs/search?q=${topicChosen}&api_key=${MY_KEY}&limit=10`, function (giphs) {
                 // Note:
                 // downsized is moving giph
                 // original_still is the paused giph
                 $('.giph_div').remove();
 
-                // first giph = giphs.data[0].images
                 let list_of_giphs = giphs.data;
 
-                list_of_giphs.forEach((giph, i) => {
+                list_of_giphs.forEach((giph) => {
                     let image_still = giph.images.original_still.url;
                     let image_animated = giph.images.downsized.url;
                     let giph_rating = giph.rating;
@@ -93,7 +93,48 @@ $(function () {
 
                     $(`.giphs`).append(div);
                 });
+
             });
+
+
+
+
+            // ORIGINAL COPY
+            // END
+            // $.ajax({
+            //     url: `https://api.giphy.com/v1/gifs/search?q=${topicChosen}&api_key=${MY_KEY}&limit=10`,
+            //     context: document.body
+            // }).done(function (giphs) {
+            //     // Note:
+            //     // downsized is moving giph
+            //     // original_still is the paused giph
+            //     $('.giph_div').remove();
+
+            //     // first giph = giphs.data[0].images
+            //     let list_of_giphs = giphs.data;
+
+            //     list_of_giphs.forEach((giph, i) => {
+            //         let image_still = giph.images.original_still.url;
+            //         let image_animated = giph.images.downsized.url;
+            //         let giph_rating = giph.rating;
+
+            //         // Giph Image
+            //         let image = $(`<img class='giph'>`);
+            //         image.attr('data-still', image_still);
+            //         image.attr('id', giph.id);
+            //         image.attr('data-animated', image_animated);
+            //         image.attr('data-status', 'paused')
+            //         image.attr('alt', giph.title);
+            //         image.attr('src', image_still);
+
+            //         let div = $(`<div class="d-inline-block p-2 text-black giph_div">`);
+            //         div.append(image);
+            //         div.append(`<p>Rated: ${giph_rating}</p>`);
+
+            //         $(`.giphs`).append(div);
+            //     });
+            // });
+            // FINISH
         }
 
     }

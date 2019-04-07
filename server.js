@@ -9,13 +9,23 @@ dotenv.config();
 app.use(express.static(__dirname + '/assets'));
 app.use('/', express.static(path.join(__dirname + '/node_modules')));
 
-app.post('/', function (req, res) {
-    res.send({MY_KEY: process.env.MY_KEY, API_KEY: process.env.API_KEY});
-});
+// ORIGINAL
+// app.post('/', function (req, res) {
+//     res.send({ MY_KEY: process.env.MY_KEY, API_KEY: process.env.API_KEY });
+// });
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '/index.html'));
-});
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname + '/index.html'));
+// });
+// ORIGINAL
+
+app.route('/')
+    .post(function (req, res) {
+        res.send({ MY_KEY: process.env.MY_KEY, API_KEY: process.env.API_KEY })
+    })
+    .get(function (req, res) {
+        res.sendFile(path.join(__dirname + '/index.html'));
+    });
 
 
 

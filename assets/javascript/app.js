@@ -1,7 +1,7 @@
 const log = console.log;
 
 $(function () {
-    'use strict';
+    // 'use strict';
     var MY_KEY = undefined;
     var API_KEY = undefined;
 

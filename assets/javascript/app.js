@@ -7,7 +7,11 @@ $(function () {
     $.post("/", (data) => {
         MY_KEY = data.MY_KEY;
         API_KEY = data.API_KEY;
-        displayGiphs(displayRandomTopic(topics));
+        
+        if (MY_KEY) {
+            displayGiphs(displayRandomTopic(topics));
+        }
+
     });
 
     // Create a function that displays all the topics

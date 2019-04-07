@@ -1,4 +1,5 @@
 $(function () {
+    'use strict';
     var MY_KEY = undefined;
     var API_KEY = undefined;
 

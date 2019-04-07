@@ -7,6 +7,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 app.use(express.static(__dirname + '/assets'));
+app.use('/', express.static(path.join(__dirname + '/node_modules')));
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 });

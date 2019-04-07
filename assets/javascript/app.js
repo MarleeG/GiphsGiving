@@ -1,3 +1,5 @@
+const log = console.log;
+
 $(function () {
     'use strict';
     var MY_KEY = undefined;
@@ -7,8 +9,9 @@ $(function () {
     $.post("/", (data) => {
         MY_KEY = data.MY_KEY;
         API_KEY = data.API_KEY;
-        
+
         if (MY_KEY) {
+            log(API_KEY);
             displayGiphs(displayRandomTopic(topics));
         }
 

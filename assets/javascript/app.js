@@ -74,7 +74,7 @@ $(function () {
             console.log(API_KEY);
 
 
-            $.get(`https://api.giphy.com/v1/gifs/search?q=${topicChosen}&api_key=${MY_KEY}&limit=10`, function (giphs) {
+            $.get(`https://api.giphy.com/v1/gifs/search?q=${topicChosen}&api_key=${MY_KEY}&limit=10/`, function (giphs) {
                 // Note:
                 // downsized is moving giph
                 // original_still is the paused giph

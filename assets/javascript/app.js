@@ -5,13 +5,12 @@ $(function () {
     var MY_KEY = undefined;
     var API_KEY = undefined;
 
-    let topics = [`Drake`, `J Cole`, `Kendrick Lamar`, `Beyonce`, `Rihanna`];
+    let topics = [`Nipsey Hussle`, `J Cole`, `Kendrick Lamar`, `Beyonce`, `Rihanna`];
     $.post("/", (data) => {
         MY_KEY = data.MY_KEY;
         API_KEY = data.API_KEY;
 
         if (MY_KEY) {
-            log(API_KEY);
             displayGiphs(displayRandomTopic(topics));
         }
 
@@ -112,7 +111,7 @@ $(function () {
                 log(topicChosen);
             }
 
-            
+
             // RUNNER UP
             let queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + topicChosen + '&' + 'api_key=' + MY_KEY + '&' + 'limit=10/'
 

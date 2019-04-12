@@ -2,7 +2,7 @@ const log = console.log;
 // var appJS = require('./assets');
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
+var port = process.env.PORT || 8080;
 const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();

@@ -9,8 +9,8 @@ dotenv.config();
 
 
 // app.use('/', appJS);
-app.use(express.static(__dirname + '/assets/javascript'));
-app.use(express.static(__dirname + '/assets/javascript'));
+// app.use(express.static(__dirname + '/assets/javascript'));
+// app.use(express.static(__dirname + '/assets/javascript'));
 
 
 // ORIGINAL

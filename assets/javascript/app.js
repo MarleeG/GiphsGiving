@@ -104,18 +104,18 @@ $(function () {
             //     });
 
 
-            log(topicChosen);
+            
             if (topicChosen.indexOf(' ') >= 0) {
-                log('spaces found. replacing space...');
                 topicChosen = topicChosen.replace(' ', '+');
                 log(topicChosen);
             } else {
-                log('no spaces');
+                log(topicChosen);
             }
+
+            
             // RUNNER UP
             let queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + topicChosen + '&' + 'api_key=' + MY_KEY + '&' + 'limit=10/'
 
-            log(queryURL);
             $.get(queryURL, function (giphs) {
                 // Note:
                 // downsized is moving giph

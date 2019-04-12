@@ -40,5 +40,5 @@ app.route('/')
 
 
 app.listen(port, () => {
-    log(`runing on ${port}`)
+    log(`running on ${port}`)
 });

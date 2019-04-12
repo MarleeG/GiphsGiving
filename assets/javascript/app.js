@@ -114,8 +114,11 @@ $(function () {
 
             // RUNNER UP
             let queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + topicChosen + '&' + 'api_key=' + MY_KEY + '&' + 'limit=10/'
+            log(queryURL);
 
             $.get(queryURL, function (giphs) {
+            log(queryURL);
+
                 // Note:
                 // downsized is moving giph
                 // original_still is the paused giph

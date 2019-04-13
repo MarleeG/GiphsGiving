@@ -6,14 +6,28 @@ $(function () {
     var API_KEY = undefined;
 
     let topics = [`Nipsey Hussle`, `J Cole`, `Kendrick Lamar`, `Beyonce`, `Rihanna`];
-    $.post("/", (data) => {
+    // $.post("/", (data) => {
+    //     MY_KEY = data.MY_KEY;
+    //     API_KEY = data.API_KEY;
+
+    //     if (MY_KEY) {
+    //         displayGiphs(displayRandomTopic(topics));
+    //     }
+
+    // });
+
+    $.ajax({
+        type: 'POST',
+        url: '/',
+        async: false
+    })
+    .done(function(data){
         MY_KEY = data.MY_KEY;
         API_KEY = data.API_KEY;
-
+ 
         if (MY_KEY) {
             displayGiphs(displayRandomTopic(topics));
         }
-
     });
 
     // Create a function that displays all the topics
@@ -114,10 +128,8 @@ $(function () {
 
             // RUNNER UP
             let queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + topicChosen + '&' + 'api_key=' + MY_KEY + '&' + 'limit=10/'
-            log(queryURL);
 
             $.get(queryURL, function (giphs) {
-            log(queryURL);
 
                 // Note:
                 // downsized is moving giph

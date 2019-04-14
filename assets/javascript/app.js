@@ -2,33 +2,37 @@ const log = console.log;
 
 $(function () {
     // 'use strict';
+    $.ajaxSetup({ async: false });
     var MY_KEY = undefined;
     var API_KEY = undefined;
 
     let topics = [`Nipsey Hussle`, `J Cole`, `Kendrick Lamar`, `Beyonce`, `Rihanna`];
-    // $.post("/", (data) => {
+
+    // jQuery.ajaxSetup({async:false});
+    $.post("/", (data) => {
+        MY_KEY = data.MY_KEY;
+        API_KEY = data.API_KEY;
+
+        if (MY_KEY) {
+            displayGiphs(displayRandomTopic(topics));
+            $.ajaxSetup({ async: false });
+        }
+
+    });
+
+    // $.ajax({
+    //     type: 'POST',
+    //     url: '/',
+    //     async: false
+    // })
+    // .done(function(data){
     //     MY_KEY = data.MY_KEY;
     //     API_KEY = data.API_KEY;
 
     //     if (MY_KEY) {
     //         displayGiphs(displayRandomTopic(topics));
     //     }
-
     // });
-
-    $.ajax({
-        type: 'POST',
-        url: '/',
-        async: false
-    })
-    .done(function(data){
-        MY_KEY = data.MY_KEY;
-        API_KEY = data.API_KEY;
- 
-        if (MY_KEY) {
-            displayGiphs(displayRandomTopic(topics));
-        }
-    });
 
     // Create a function that displays all the topics
     // This will display all the topics in the topics array
@@ -117,7 +121,7 @@ $(function () {
             //     });
 
 
-            
+
             if (topicChosen.indexOf(' ') >= 0) {
                 topicChosen = topicChosen.replace(' ', '+');
                 log(topicChosen);

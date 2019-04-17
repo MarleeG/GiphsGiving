@@ -1,0 +1,15 @@
+SYNCHRONOUS REPLACEMENT TO POST - Deprecated
+$.ajax({
+        type: 'POST',
+        url: '/',
+        success: (data) => {
+            MY_KEY = data.MY_KEY;
+            API_KEY = data.API_KEY;
+
+            if (MY_KEY) {
+                displayGiphs(displayRandomTopic(topics));
+            }
+        },
+        async: false
+    });
+

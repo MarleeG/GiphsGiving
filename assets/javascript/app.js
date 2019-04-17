@@ -1,6 +1,13 @@
 const log = console.log;
 
-$(function () {
+$(document).ready(() => {
+
+    // uncomment these two
+    // })
+    // $(function () {
+
+
+
     // 'use strict';
     // jQuery.ajaxSetup({ async: false });
     var MY_KEY = undefined;
@@ -19,21 +26,6 @@ $(function () {
         }
 
     });
-
-    // $.ajax({
-    //     type: 'POST',
-    //     url: '/',
-    //     success: (data) => {
-    //         MY_KEY = data.MY_KEY;
-    //         API_KEY = data.API_KEY;
-
-    //         if (MY_KEY) {
-    //             displayGiphs(displayRandomTopic(topics));
-    //         }
-    //     },
-    //     async: false
-    // });
-
 
     // Create a function that displays all the topics
     // This will display all the topics in the topics array

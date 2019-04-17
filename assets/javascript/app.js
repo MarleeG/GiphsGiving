@@ -1,55 +1,17 @@
-const log = console.log;
-
-$(document).ready(() => {
-
-    // uncomment these two
-    // })
-    // $(function () {
-
-
-
-    // 'use strict';
-    // jQuery.ajaxSetup({ async: false });
+$(function () {
     var MY_KEY = undefined;
-    var API_KEY = undefined;
 
     let topics = [`Nipsey Hussle`, `J Cole`, `Kendrick Lamar`, `Beyonce`, `Rihanna`];
 
-    log(`assigning/initializng variables:`);
-    // log(`1a | MY_KEY: ${MY_KEY}`);
-    log(`1b | API_KEY: ${API_KEY}`);
-    log(`1c | topics:${topics}`);
-    log(`-------------------------`);
-
-
-    // jQuery.ajaxSetup({async:false});
     $.post("/", (data) => {
         MY_KEY = data.MY_KEY;
-        API_KEY = data.API_KEY;
-        log(`2a | Inside post method..`);
-        log(`api key ${API_KEY}`);
-        // log(`2b | data: ${JSON.stringify(data)}`);
-        log(`-------------------------`);
 
         if (MY_KEY) {
-            log(`3a | Inside of post method within conditional statement..`);
-            // log(`3b | MY_KEY: ${MY_KEY}`);
-            log(`-------------------------`);
-
-            log(`4a | giphs are displaying...`);
-            log(`-------------------------`);
-
             displayGiphs(displayRandomTopic(topics));
-
-            // jQuery.ajaxSetup({ async: false });
         }
 
-    })
-    .fail((err) => {
-        log(`ERR: ${err}`)
     });
 
-    // Create a function that displays all the topics
     // This will display all the topics in the topics array
     function displayButtons(topicsArray) {
         topicsArray.forEach((topic) => {
@@ -96,42 +58,18 @@ $(document).ready(() => {
     function displayRandomTopic(topicsArray) {
         let randomTopic = Math.floor(Math.random() * topicsArray.length);
         let topicPicked = topicsArray[randomTopic];
-        log(`5a | Inside displayRandomTopic function... `);
-        log(`5b | Topic: ${topicPicked}`);
-        log(`-------------------------`);
         return topicPicked;
     }
 
     function displayGiphs(topicChosen) {
-        log(`6a | displayingGiphs function...`);
-        log(`6b | topic should still be...${topicChosen}`);
-        // log(`6c | MY_KEY: ${MY_KEY}`);
-        log(`6d | API_KEY: ${API_KEY}`);
-        log(`-------------------------`);
 
         if (MY_KEY) {
-            log(`7a | if MY_KEY is not undefined then display giphs...`);
-            // log(`7b | MY_KEY: ${MY_KEY}`);
-            log(`7c | API_KEY: ${API_KEY}`);
-            log(`-------------------------`);
-
+            // if there is a space in the topic chosen then replace space with +
             if (topicChosen.indexOf(' ') >= 0) {
-                log(`8a | If topic has a space then replace with a +`)
                 topicChosen = topicChosen.replace(' ', '+');
-                log(`8b | topic is now...${topicChosen}`);
-                log(`-------------------------`);
+            } 
 
-            } else {
-                log(`8a | topic does not have a space...`)
-                log(`8b | topicChosen...${topicChosen}`);
-                log(`-------------------------`);
-            }
-
-
-            // RUNNER UP
             let queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + topicChosen + '&' + 'api_key=' + MY_KEY + '&' + 'limit=10/'
-            log(`9a | query url: ${queryURL}`);
-            log(`-------------------------`);
 
             $.get(queryURL, function (giphs) {
 

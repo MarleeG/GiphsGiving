@@ -1,6 +1,5 @@
 $(function () {
     var MY_KEY = undefined;
-
     let topics = [`Nipsey Hussle`, `J Cole`, `Kendrick Lamar`, `Beyonce`, `Rihanna`];
 
     $.post("/", (data) => {

@@ -26,7 +26,8 @@ $(document).ready(() => {
     $.post("/", (data) => {
         MY_KEY = data.MY_KEY;
         API_KEY = data.API_KEY;
-        log(`2a | Inside post method..`)
+        log(`2a | Inside post method..`);
+        log(`api key ${API_KEY}`);
         // log(`2b | data: ${JSON.stringify(data)}`);
         log(`-------------------------`);
 
@@ -43,6 +44,9 @@ $(document).ready(() => {
             // jQuery.ajaxSetup({ async: false });
         }
 
+    })
+    .fail((err) => {
+        log(`ERR: ${err}`)
     });
 
     // Create a function that displays all the topics

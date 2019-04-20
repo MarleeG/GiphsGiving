@@ -14,3 +14,19 @@
 .topic_button{
     margin: 5px;
 }
+
+
+@media only screen and (max-width: 414px) {
+    .giph{
+        width: 90%;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .giph{
+        width: 90%;
+        height: auto;
+    }
+}
+

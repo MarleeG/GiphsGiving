@@ -1,6 +1,6 @@
 # GiphsGiving
 
-Like Giphs? Search a variety of funny giphs that will keep you entertained. Click on a giph to watch it play!
+Like Giphs? Search a variety of funny giphs that will keep you entertained. Click on a giph to watch it play! Click it again to stop it. 
 
 ## Built With 
 

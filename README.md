@@ -3,7 +3,6 @@
 Like Giphs? Search a variety of funny giphs that will keep you entertained. Click on a giph to watch it play! Click it again to stop it. 
 
 ## Built With 
-
 - [Javscript](https://www.javascript.com/)
 - [jQuery](https://jquery.com/)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)

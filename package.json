@@ -20,6 +20,7 @@
   "dependencies": {
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
+    "heroku": "^7.29.0",
     "mixin-deep": "^2.0.1",
     "nodemon": "^1.18.10",
     "npm": "^6.9.0",

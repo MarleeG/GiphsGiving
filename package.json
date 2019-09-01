@@ -20,8 +20,10 @@
   "dependencies": {
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
+    "mixin-deep": "^2.0.1",
     "nodemon": "^1.18.10",
     "npm": "^6.9.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "set-value": "^3.0.1"
   }
 }

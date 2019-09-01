@@ -11,5 +11,5 @@ Like Giphs? Search a variety of funny giphs that will keep you entertained. Clic
 - [HTML](https://www.w3schools.com/html/)
 - [Giphy API](https://giphy.com)
 
-## Deployed App - Coming Soon
+## Deployed App
 * [GiphsGiving](https://giphs-giving.herokuapp.com/) - App  
